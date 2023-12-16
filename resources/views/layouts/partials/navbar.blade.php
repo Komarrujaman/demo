@@ -1,17 +1,17 @@
 <!-- partial:../../partials/_navbar.html -->
-<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{url('/')}}"><i class="mdi mdi-fast-forward">Demo</i></a>
-        <a class="navbar-brand brand-logo-mini" href="{{url('/')}}"><i class="mdi mdi-fast-forward"></i></a>
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row bg-gradient-primary">
+    <div class="navbar-brand-wrapper d-flex align-items-center justify-content-center bg-gradient-primary">
+        <a class="navbar-brand brand-logo mx-3" href="{{url('/')}}"><img src="{{asset('assets/images/logo.png')}}" alt="" srcset="" style="height: 50px; width:50px;"></a>
+        <a class="navbar-brand brand-logo-mini mx-3" href="{{url('/')}}"><img src="{{asset('assets/images/logo.png')}}" alt="" srcset="" style="height: 30px; width:30px;"></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
         </button>
         <div class="search-field d-none d-md-block">
-            <div class="d-flex align-items-center h-100">
-                <a href="#aws" class="nav-link text-secondary lead fw-bold">AWS</a>
-                <a href="#water-level" class="nav-link text-secondary lead fw-bold">Water Level</a>
+            <div class="d-flex align-items-center h-100 ">
+                <a href="#aws" class="nav-link lead fw-bold text-white">AWS</a>
+                <a href="#water-level" class="nav-link lead fw-bold text-white">Water Level</a>
             </div>
         </div>
         <ul class="navbar-nav navbar-nav-right">
@@ -22,21 +22,16 @@
                         <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
-                        <p class="mb-1 text-black">Admin</p>
+                        <p class="mb-1 text-white">Admin</p>
                     </div>
                 </a>
-                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown" style="background-color: #fcb717;">
                     <a class="dropdown-item" href="#">
                         <i class="mdi mdi-cached me-2 text-success"></i> Profile </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">
                         <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
                 </div>
-            </li>
-            <li class="nav-item d-none d-lg-block full-screen-link">
-                <a class="nav-link">
-                    <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-                </a>
             </li>
 
         </ul>
