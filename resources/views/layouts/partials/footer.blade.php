@@ -20,9 +20,16 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <!-- End plugin js for this page -->
 <!-- inject:js -->
+<!-- Date Range Picker -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="{{asset('assets/vendors/daterangepicker/daterangepicker.js')}}"></script>
+<!-- End Date Range -->
 <script src="{{asset('assets/js/off-canvas.js')}}"></script>
 <script src="{{asset('assets/js/hoverable-collapse.js')}}"></script>
 <script src="{{asset('assets/js/misc.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
 <!-- endinject -->
 <!-- Custom js for this page -->
 <script src="{{asset('assets/js/chart.js')}}"></script>

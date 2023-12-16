@@ -1,11 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.main', ['title' => 'Riwayat Water Level'])
 
 @section('content')
 <div class="page-header">
     <h1 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white me-2">
             <i class="mdi mdi-file-chart"></i>
-        </span> Water Level History & Report
+        </span> Laporan & Riwayat Tinggi Muka Air
     </h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -16,149 +16,74 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 class="card-title">Water Level</h4>
-                    </div>
-                    <div class="col-md-8">
-                        <form class="forms-sample">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <select class="form-control form-control-sm">
-                                            <option>Last 24 Hour</option>
-                                            <option>Last 7 Days</option>
-                                            <option>Last 30 Days</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-gradient-primary me-2">Export</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <div class="card" style="background-color: transparent;">
+        <div class="card-body">
+            <form action="" class="form-control">
+                <div class="d-flex flex-row">
+                    <input type="text" name="dates" id="date" class="form-control w-25 text-black">
+                    <button type="submit" class="btn btn-sm btn-gradient-primary ms-2">Filter</button>
                 </div>
-                <canvas id="areaWL" style="height:250px"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 class="card-title">Battery</h4>
-                    </div>
-                    <div class="col-md-8">
-                        <form class="forms-sample">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <select class="form-control form-control-sm">
-                                            <option>Last 24 Hour</option>
-                                            <option>Last 7 Days</option>
-                                            <option>Last 30 Days</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-gradient-primary me-2">Export</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <canvas id="areaBat" style="height:250px"></canvas>
-            </div>
+            </form>
+            <div id="wl-chart" class="w-full" style="height:300px"></div>
         </div>
     </div>
 </div>
+
+<!-- Pressure & Windspeed -->
 
 @endsection
 
 
 @section('chart')
 <script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Water Level",
-            data: [12, 15, 3, 5, 2, 20],
-            backgroundColor: [
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+    // Date Range Picker
+    $('input[name="dates"]').daterangepicker();
+    // Chart
+    var data = [{
+            timestamp: 1598918400000,
+            level: 25,
         },
-    };
-
-    if ($("#areaWL").length) {
-        var areaChartCanvas = $("#areaWL").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
-</script>
-
-
-<!-- Battery -->
-<script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Battery",
-            data: [80, 100, 120, 79, 90, 70],
-            backgroundColor: [
-                "rgba(76,122,251, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 222, 1)",
-                "rgba(255, 206, 86, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+        {
+            timestamp: 1599004800000,
+            level: 28,
         },
-    };
+        {
+            timestamp: 1599091100000,
+            level: 30,
+        },
+        // Add more data points here
+    ];
 
-    if ($("#areaBat").length) {
-        var areaChartCanvas = $("#areaBat").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
+    // Convert timestamp to JavaScript Date object
+    data.forEach(function(point) {
+        point.timestamp = new Date(point.timestamp);
+    });
+
+    // Create the chart
+    Highcharts.chart('wl-chart', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Tinggi Muka Air Lokasi 1'
+        },
+        xAxis: {
+            type: 'datetime',
+            labels: {
+                format: '{value:%d/%m/%Y}' // Format the x-axis labels as desired
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Ketinggian'
+            }
+        },
+        series: [{
+            name: 'Water Level',
+            data: data.map(function(point) {
+                return [point.timestamp.getTime(), point.level];
+            })
+        }, ],
+    });
 </script>
 @endsection

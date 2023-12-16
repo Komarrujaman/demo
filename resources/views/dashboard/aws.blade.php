@@ -3,7 +3,7 @@
         <div class="col-12 grid-margin">
             <div class="card" style="background-color: transparent;">
                 <div class="card-body">
-                    <h3 class="text-center mb-3">Automatic Weather Station (AWS)</h3>
+                    <h2 class="text-center mb-3">Automatic Weather Station (AWS)</h2>
                     <div class="row">
                         <div class="col-lg-4 grid-margin">
                             <div class="card shadow">
@@ -17,6 +17,7 @@
                                             <h5><i class="bi bi-thermometer"></i> <span>Temperatur : 30°C</span></h5>
                                             <h5><i class="bi bi-moisture"></i> <span>Kelembaban : 20%</span></h5>
                                             <h5><i class="bi bi-speedometer2"></i> <span>Baro Press : 102.23 hPa</span></h5>
+                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : 102.23 W/m2</span></h5>
                                             <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : 10 m/s</span></h5>
                                             <h5><i class="bi bi-compass"></i> <span>Arah Angin : 90 deg</span></h5>
                                             <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : 30 mm/h</span></h5>
@@ -45,6 +46,7 @@
                                             <h5><i class="bi bi-thermometer"></i> <span>Temperatur : 30°C</span></h5>
                                             <h5><i class="bi bi-moisture"></i> <span>Kelembaban : 20%</span></h5>
                                             <h5><i class="bi bi-speedometer2"></i> <span>Baro Press : 102.23 hPa</span></h5>
+                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : 102.23 W/m2</span></h5>
                                             <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : 10 m/s</span></h5>
                                             <h5><i class="bi bi-compass"></i> <span>Arah Angin : 90 deg</span></h5>
                                             <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : 30 mm/h</span></h5>
@@ -72,6 +74,7 @@
                                             <h5><i class="bi bi-thermometer"></i> <span>Temperatur : 30°C</span></h5>
                                             <h5><i class="bi bi-moisture"></i> <span>Kelembaban : 20%</span></h5>
                                             <h5><i class="bi bi-speedometer2"></i> <span>Baro Press : 102.23 hPa</span></h5>
+                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : 102.23 W/m2</span></h5>
                                             <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : 10 m/s</span></h5>
                                             <h5><i class="bi bi-compass"></i> <span>Arah Angin : 90 deg</span></h5>
                                             <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : 30 mm/h</span></h5>

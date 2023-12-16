@@ -1,11 +1,11 @@
-@extends('layouts.main')
+@extends('layouts.main', ['title' => 'Riwayat AWS'])
 
 @section('content')
 <div class="page-header">
     <h1 class="page-title">
         <span class="page-title-icon bg-gradient-primary text-white me-2">
             <i class="mdi mdi-file-chart"></i>
-        </span> AWS History & Report
+        </span> Laporan & Riwayat AWS
     </h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -16,34 +16,15 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4 class="card-title">Temperature</h4>
-                    </div>
-                    <div class="col-md-8">
-                        <form class="forms-sample">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <select class="form-control form-control-sm">
-                                            <option>Last 24 Hour</option>
-                                            <option>Last 7 Days</option>
-                                            <option>Last 30 Days</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-gradient-primary me-2">Export</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <div class="card" style="background-color: transparent;">
+        <div class="card-body">
+            <form action="" class="form-control">
+                <div class="d-flex flex-row">
+                    <input type="text" name="dates" id="date" class="form-control w-25 text-black">
+                    <button type="submit" class="btn btn-sm btn-gradient-primary ms-2">Filter</button>
                 </div>
-                <canvas id="areaTemp" style="height:250px"></canvas>
-            </div>
+            </form>
+            <div id="aws-chart" class="w-full" style="height:300px"></div>
         </div>
     </div>
 </div>
@@ -55,237 +36,73 @@
 
 @section('chart')
 <script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Temperature",
-            data: [12, 15, 3, 5, 2, 20],
-            backgroundColor: [
-                "rgba(54, 162, 235, 0.2)",
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+    // Date Range Picker
+    $('input[name="dates"]').daterangepicker();
+    // Chart
+    var data = [{
+            timestamp: 1598918400000,
+            temperature: 25,
+            humidity: 70,
+            windSpeed: 10
         },
-    };
-
-    if ($("#areaTemp").length) {
-        var areaChartCanvas = $("#areaTemp").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
-</script>
-<script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Humidity",
-            data: [12, 15, 3, 5, 2, 20],
-            backgroundColor: [
-                "rgba(255, 206, 86, 0.2)",
-                "rgba(75, 192, 192, 0.2)",
-                "rgba(153, 102, 255, 0.2)",
-                "rgba(255, 159, 64, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+        {
+            timestamp: 1599004800000,
+            temperature: 28,
+            humidity: 55,
+            windSpeed: 40
         },
-    };
-
-    if ($("#areaHum").length) {
-        var areaChartCanvas = $("#areaHum").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
-</script>
-
-
-<!-- Pressure -->
-<script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Pressure",
-            data: [3, 10, 3, 5, 4, 100],
-            backgroundColor: [
-                "rgba(184, 98, 207, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 222, 1)",
-                "rgba(255, 206, 86, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+        {
+            timestamp: 1599091100000,
+            temperature: 30,
+            humidity: 100,
+            windSpeed: 20
         },
-    };
+        // Add more data points here
+    ];
 
-    if ($("#areaPress").length) {
-        var areaChartCanvas = $("#areaPress").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
-</script>
+    // Convert timestamp to JavaScript Date object
+    data.forEach(function(point) {
+        point.timestamp = new Date(point.timestamp);
+    });
 
-<!-- Wind Speed -->
-<script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Pressure",
-            data: [3, 10, 40, 5, 4, 30],
-            backgroundColor: [
-                "rgba(69,196,171, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 222, 1)",
-                "rgba(255, 206, 86, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+    // Create the chart
+    Highcharts.chart('aws-chart', {
+        chart: {
+            type: 'line'
         },
-    };
-
-    if ($("#areaWind").length) {
-        var areaChartCanvas = $("#areaWind").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
-</script>
-
-<!-- Rainfall -->
-<script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Pressure",
-            data: [100, 92, 80, 110, 90, 70],
-            backgroundColor: [
-                "rgba(241,164,61, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 222, 1)",
-                "rgba(255, 206, 86, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+        title: {
+            text: 'Temperature, Humidity, and Wind Speed'
         },
-    };
-
-    if ($("#areaRain").length) {
-        var areaChartCanvas = $("#areaRain").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
-</script>
-
-<!-- Battery -->
-<script>
-    var areaData = {
-        labels: ["01/12", "02/12", "03/12", "04/12", "05/12", "06/12"],
-        datasets: [{
-            label: "Pressure",
-            data: [80, 100, 120, 79, 90, 70],
-            backgroundColor: [
-                "rgba(76,122,251, 0.2)",
-            ],
-            borderColor: [
-                "rgba(255,99,132,1)",
-                "rgba(54, 162, 222, 1)",
-                "rgba(255, 206, 86, 1)",
-            ],
-            borderWidth: 1,
-            fill: true, // 3: no fill
-        }, ],
-    };
-
-    var areaOptions = {
-        plugins: {
-            filler: {
-                propagate: true,
-            },
+        xAxis: {
+            type: 'datetime',
+            labels: {
+                format: '{value:%d/%m/%Y}' // Format the x-axis labels as desired
+            }
         },
-    };
-
-    if ($("#areaBat").length) {
-        var areaChartCanvas = $("#areaBat").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
-            type: "line",
-            data: areaData,
-            options: areaOptions,
-        });
-    }
+        yAxis: {
+            title: {
+                text: 'Value'
+            }
+        },
+        series: [{
+                name: 'Temperature',
+                data: data.map(function(point) {
+                    return [point.timestamp.getTime(), point.temperature];
+                })
+            },
+            {
+                name: 'Humidity',
+                data: data.map(function(point) {
+                    return [point.timestamp.getTime(), point.humidity];
+                })
+            },
+            {
+                name: 'Wind Speed',
+                data: data.map(function(point) {
+                    return [point.timestamp.getTime(), point.windSpeed];
+                })
+            }
+        ],
+    });
 </script>
 @endsection
