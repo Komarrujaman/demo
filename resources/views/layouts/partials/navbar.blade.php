@@ -10,8 +10,7 @@
         </button>
         <div class="search-field d-none d-md-block">
             <div class="d-flex align-items-center h-100 ">
-                <a href="#aws" class="nav-link lead fw-bold text-white">AWS</a>
-                <a href="#water-level" class="nav-link lead fw-bold text-white">Water Level</a>
+                <h2 class=" fw-bold text-white">Balai Sungai Wilayah 2 NTT</h2>
             </div>
         </div>
         <ul class="navbar-nav navbar-nav-right">
@@ -29,7 +28,7 @@
                     <a class="dropdown-item" href="#">
                         <i class="mdi mdi-cached me-2 text-success"></i> Profile </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{{url('logout')}}">
                         <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
                 </div>
             </li>

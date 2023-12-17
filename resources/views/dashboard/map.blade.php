@@ -1,7 +1,7 @@
 <section id="maps">
     <div class="row">
         <div class="col-12 grid-margin">
-            <h2 class="text-center mb-3">Sebaran Pos Hidrologi</h2>
+            <h2 class="text-center mb-5 fw-bold">Sebaran Pos Hidrologi</h2>
             <div class="card shadow">
                 <div class="p-2">
                     <div id="map">
@@ -24,6 +24,7 @@
         </div>
     </div>
 </section>
+<hr>
 
 
 
