@@ -15,18 +15,17 @@
                                     <h4><span>12/12/23 - 12:28:22</span></h4>
                                     <div class="row mt-2">
                                         <div class="col-12">
-
-                                            <h2>
-                                                <i class="bi bi-water"></i>
-                                                <span>
-                                                    {{
-            isset($wl['water_level_value']) 
-            ? number_format($wl['jenis_water_level'] === 'VNOTCH' ? $wl['water_level_value'] * 100 : $wl['water_level_value'], 2)
-            : 'N/A'
-        }}
-                                                    cm
-                                                </span>
-                                            </h2>
+                                            <h2><i class="bi bi-water"></i> <span><?php
+                                                                                    if (isset($wl['jenis_water_level']) && $wl['jenis_water_level'] === 'VNOTCH') {
+                                                                                        // Jika jenis_water_level adalah VNOTCH, konversi nilai ke cm dan kurangi 21
+                                                                                        $converted_value = isset($wl['water_level_value']) ? number_format(($wl['water_level_value'] * 100) - 21, 2) : 'N/A';
+                                                                                        echo $converted_value . ' cm';
+                                                                                    } else {
+                                                                                        // Jika jenis_water_level bukan VNOTCH, tampilkan nilai dalam meter
+                                                                                        $value_to_display = isset($wl['water_level_value']) ? number_format($wl['water_level_value'], 2) : 'N/A';
+                                                                                        echo $value_to_display . ' m';
+                                                                                    }
+                                                                                    ?></span></h2>
                                             <h6><span>Water Pressure : {{ isset($wl['water_pressure_value']) ? number_format($wl['water_pressure_value'], 2) : 'N/A' }} kPa</span></h6>
                                             <h6><span>Diff Pressure : {{ isset($wl['diff_pressure_value']) ? number_format($wl['diff_pressure_value'], 2) : 'N/A' }} kPa</span></h6>
                                             <h6><span>Water Temperature : {{ isset($wl['water_temperature_value']) ? number_format($wl['water_temperature_value'], 2) : 'N/A' }} °C</span></h6>
