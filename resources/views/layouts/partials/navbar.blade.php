@@ -10,7 +10,7 @@
         </button>
         <div class="search-field d-none d-md-block">
             <div class="d-flex align-items-center h-100 ">
-                <h2 class=" fw-bold text-white">Balai Sungai Wilayah 2 NTT</h2>
+                <h2 class=" fw-bold text-white">UPB Timor Bagian Barat</h2>
             </div>
         </div>
         <ul class="navbar-nav navbar-nav-right">
