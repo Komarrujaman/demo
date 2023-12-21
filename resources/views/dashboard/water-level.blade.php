@@ -17,7 +17,7 @@
                                         <div class="col-12">
                                             <h2><i class="bi bi-water"></i> <span>{{ isset($wl['water_level_value']) ? number_format($wl['water_level_value'], 2) : 'N/A' }} m</span></h2>
                                             <h6><span>Water Pressure : {{ isset($wl['water_pressure_value']) ? number_format($wl['water_pressure_value'], 2) : 'N/A' }} kPa</span></h6>
-                                            <h6><span>Diff Pressure : {{ isset($wl['diff_pressure_value']) ? number_format($wl['diff_pressure_value'], 2) : 'N/A' }} </span></h6>
+                                            <h6><span>Diff Pressure : {{ isset($wl['diff_pressure_value']) ? number_format($wl['diff_pressure_value'], 2) : 'N/A' }} kPa</span></h6>
                                             <h6><span>Water Temperature : {{ isset($wl['water_temperature_value']) ? number_format($wl['water_temperature_value'], 2) : 'N/A' }} °C</span></h6>
                                             <h6><span>Water Flow : {{ isset($wl['water_flow_value']) ? number_format($wl['water_flow_value'], 2) : 'N/A' }} l/s</span></h6>
                                             <h6><span>Barometric Pressure : {{ isset($wl['barometric_pressure_value']) ? number_format($wl['barometric_pressure_value'], 2) : 'N/A' }} kPa</span></h6>
@@ -26,7 +26,8 @@
                                     </div>
                                     <div class="d-flex align-items-top mb-0 mt-2">
                                         <div class="ms-auto">
-                                            <a href="{{url('wl-details')}}" class="btn rounded-pill btn-sm btn-gradient-success shadow">Location</a>
+                                            <a href="https://www.google.com/maps?q={{$wl['lat']}},{{$wl['lng']}}" class="btn rounded-pill btn-sm btn-gradient-success shadow" target="_blank">Location</a>
+
                                             <a href="{{url('wl-details')}}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
                                         </div>
                                     </div>

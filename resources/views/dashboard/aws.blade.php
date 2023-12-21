@@ -12,7 +12,7 @@
                                     <h3 class="w-full text-center mb-5 mt-3">
                                         {{$aws['nama']}}
                                     </h3>
-                                    <h4><span>{{$aws['scaled_series_timestamp']}}</span></h4>
+                                    <h4><span>{{ isset($aws['scaled_series_timestamp']) ? $aws['scaled_series_timestamp'] : 'N/A' }}</span></h4>
                                     <div class="row mt-3">
                                         <div class="col-12">
                                             <h5><i class="bi bi-thermometer"></i> <span>Temperature : {{ isset($aws['temperature_value']) ? number_format($aws['temperature_value'], 2) : 'N/A' }} °C </span></h5>
@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="d-flex align-items-top mb-0 mt-2">
                                         <div class="ms-auto">
-                                            <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-success shadow">Location</a>
+                                            <a href="https://www.google.com/maps?q={{$aws['lat']}},{{$aws['lng']}}" class="btn rounded-pill btn-sm btn-gradient-success shadow" target="_blank">Location</a>
                                             <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
                                         </div>
                                     </div>
