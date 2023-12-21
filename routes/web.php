@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AwsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WaterLevelController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+Route::get('/', [HomeController::class, 'index']);
 Route::get('aws-details', [AwsController::class, 'index']);
 Route::get('aws', [AwsController::class, 'show']);
 Route::get('wl-details', [WaterLevelController::class, 'index']);

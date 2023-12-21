@@ -5,23 +5,25 @@
                 <div class="card-body">
                     <h2 class="text-center mb-5 fw-bold">Automatic Weather Station (AWS)</h2>
                     <div class="row">
+                        @foreach ($awsHome as $aws )
                         <div class="col-lg-4 grid-margin">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h3 class="w-full text-center mb-5 mt-3">
-                                        Tilong 1
+                                        {{$aws['nama']}}
                                     </h3>
-                                    <h4><span>12/12/23 - 12:28:22</span></h4>
+                                    <h4><span>{{$aws['scaled_series_timestamp']}}</span></h4>
                                     <div class="row mt-3">
                                         <div class="col-12">
-                                            <h5><i class="bi bi-thermometer"></i> <span>Temperatur : 30°C</span></h5>
-                                            <h5><i class="bi bi-moisture"></i> <span>Kelembaban : 20%</span></h5>
-                                            <h5><i class="bi bi-speedometer2"></i> <span>Baro Press : 102.23 hPa</span></h5>
-                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : 102.23 W/m2</span></h5>
-                                            <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : 10 m/s</span></h5>
-                                            <h5><i class="bi bi-compass"></i> <span>Arah Angin : 90 deg</span></h5>
-                                            <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : 30 mm/h</span></h5>
-                                            <h5><i class="bi bi-battery-charging"></i> <span>Baterai : 12.4 V</span></h5>
+                                            <h5><i class="bi bi-thermometer"></i> <span>Temperature : {{ isset($aws['temperature_value']) ? number_format($aws['temperature_value'], 2) : 'N/A' }} °C </span></h5>
+                                            <h5><i class="bi bi-moisture"></i> <span>Kelembaban : {{ isset($aws['rh_value']) ? number_format($aws['rh_value'], 2) : 'N/A' }}%</span></h5>
+                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : {{ isset($aws['solar_radiation_value']) ? number_format($aws['solar_radiation_value'], 3) : 'N/A' }} W/m²</span></h5>
+                                            <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : {{ isset($aws['wind_speed_value']) ? number_format($aws['wind_speed_value'], 2) : 'N/A' }} m/s</span></h5>
+                                            <h5><i class="bi bi-wind"></i> <span>Gust Speed : {{ isset($aws['gust_speed_value']) ? number_format($aws['gust_speed_value'], 2) : 'N/A' }} m/s</span></h5>
+                                            <h5><i class="bi bi-compass"></i> <span>Arah Angin : {{ isset($aws['wind_direction_value']) ? number_format($aws['wind_direction_value'], 2) : 'N/A' }} deg</span></h5>
+                                            <h5><i class="bi bi-compass"></i> <span>Dew Point : {{ isset($aws['dew_point_value']) ? number_format($aws['dew_point_value'], 2) : 'N/A' }} °C</span></h5>
+                                            <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : {{ isset($aws['rain_value']) ? number_format($aws['rain_value'], 2) : 'N/A' }} mm</span></h5>
+                                            <h5><i class="bi bi-battery-charging"></i> <span>Baterai : {{ isset($aws['scaled_series_value']) ? number_format($aws['scaled_series_value'], 2) : 'N/A' }} V</span></h5>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-top mb-0 mt-2">
@@ -33,65 +35,7 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-lg-4 grid-margin">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <h3 class="w-full text-center mb-5 mt-3">
-                                        Tilong 2
-                                    </h3>
-                                    <h4><span>12/12/23 - 12:28:22</span></h4>
-                                    <div class="row mt-3">
-                                        <div class="col-12">
-                                            <h5><i class="bi bi-thermometer"></i> <span>Temperatur : 30°C</span></h5>
-                                            <h5><i class="bi bi-moisture"></i> <span>Kelembaban : 20%</span></h5>
-                                            <h5><i class="bi bi-speedometer2"></i> <span>Baro Press : 102.23 hPa</span></h5>
-                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : 102.23 W/m2</span></h5>
-                                            <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : 10 m/s</span></h5>
-                                            <h5><i class="bi bi-compass"></i> <span>Arah Angin : 90 deg</span></h5>
-                                            <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : 30 mm/h</span></h5>
-                                            <h5><i class="bi bi-battery-charging"></i> <span>Baterai : 12.4 V</span></h5>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-top mb-0 mt-2">
-                                        <div class="ms-auto">
-                                            <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-success shadow">Location</a>
-                                            <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 grid-margin">
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <h3 class="w-full text-center mb-5 mt-3">
-                                        Tilong 3
-                                    </h3>
-                                    <h4><span>12/12/23 - 12:28:22</span></h4>
-                                    <div class="row mt-3">
-                                        <div class="col-12">
-                                            <h5><i class="bi bi-thermometer"></i> <span>Temperatur : 30°C</span></h5>
-                                            <h5><i class="bi bi-moisture"></i> <span>Kelembaban : 20%</span></h5>
-                                            <h5><i class="bi bi-speedometer2"></i> <span>Baro Press : 102.23 hPa</span></h5>
-                                            <h5><i class="bi bi-brightness-high-fill"></i> <span>Solar Rad : 102.23 W/m2</span></h5>
-                                            <h5><i class="bi bi-wind"></i> <span>Kecepatan Angin : 10 m/s</span></h5>
-                                            <h5><i class="bi bi-compass"></i> <span>Arah Angin : 90 deg</span></h5>
-                                            <h5><i class="bi bi-cloud-rain-fill"></i> <span>Curah Hujan : 30 mm/h</span></h5>
-                                            <h5><i class="bi bi-battery-charging"></i> <span>Baterai : 12.4 V</span></h5>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-top mb-0 mt-2">
-                                        <div class="ms-auto">
-                                            <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-success shadow">Location</a>
-                                            <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
