@@ -38,6 +38,7 @@ class WaterLevel extends Model
                 $loggerData["{$measurementType}_volume"] = $sensor->volume;
                 $loggerData["{$measurementType}_debit"] = $sensor->debit;
                 $loggerData["{$measurementType}_level_mdpl"] = $sensor->level_mdpl;
+                $loggerData["{$measurementType}_timestamp"] = $sensor->timestamp;
             }
 
             $transformedData[] = $loggerData;

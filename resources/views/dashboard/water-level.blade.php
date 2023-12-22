@@ -12,7 +12,7 @@
                                     <h3 class="w-full text-center mb-5 mt-3">
                                         {{$wl['nama']}}
                                     </h3>
-                                    <h4><span>12/12/23 - 12:28:22</span></h4>
+                                    <h4><span>{{ isset($wl['battery_timestamp']) ? number_format($wl['battery_timestamp'], 2) : 'N/A' }}</span></h4>
                                     <div class="row mt-2">
                                         <div class="col-12">
                                             <h2><i class="bi bi-water"></i> <span><?php
@@ -37,7 +37,6 @@
                                     <div class="d-flex align-items-top mb-0 mt-2">
                                         <div class="ms-auto">
                                             <a href="https://www.google.com/maps?q={{$wl['lat']}},{{$wl['lng']}}" class="btn rounded-pill btn-sm btn-gradient-success shadow" target="_blank">Location</a>
-
                                             <a href="{{url('wl-details')}}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
                                         </div>
                                     </div>
