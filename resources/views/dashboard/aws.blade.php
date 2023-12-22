@@ -29,7 +29,7 @@
                                     <div class="d-flex align-items-top mb-0 mt-2">
                                         <div class="ms-auto">
                                             <a href="https://www.google.com/maps?q={{$aws['lat']}},{{$aws['lng']}}" class="btn rounded-pill btn-sm btn-gradient-success shadow" target="_blank">Location</a>
-                                            <a href="{{url('aws-details')}}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
+                                            <a href="{{ url('aws-details', ['sn' => $aws['sn']]) }}" class="btn rounded-pill btn-sm btn-gradient-primary shadow">Detail</a>
                                         </div>
                                     </div>
                                 </div>
