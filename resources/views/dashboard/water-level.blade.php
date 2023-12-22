@@ -12,7 +12,7 @@
                                     <h3 class="w-full text-center mb-5 mt-3">
                                         {{$wl['nama']}}
                                     </h3>
-                                    <h4><span>{{ isset($wl['battery_timestamp']) ? number_format($wl['battery_timestamp'], 2) : 'N/A' }}</span></h4>
+                                    <h4><span>{{ isset($wl['battery_timestamp']) ? $wl['battery_timestamp'] : 'N/A' }}</span></h4>
                                     <div class="row mt-2">
                                         <div class="col-12">
                                             <h2><i class="bi bi-water"></i> <span><?php
