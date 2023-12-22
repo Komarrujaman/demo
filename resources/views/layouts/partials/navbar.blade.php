@@ -1,8 +1,8 @@
 <!-- partial:../../partials/_navbar.html -->
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row bg-gradient-primary">
     <div class="navbar-brand-wrapper d-flex align-items-center justify-content-center bg-gradient-primary">
-        <a class="navbar-brand brand-logo mx-3" href="{{('/')}}"><img src="{{asset('assets/images/logo.png')}}" alt="" srcset="" style="height: 50px; width:50px;"></a>
-        <a class="navbar-brand brand-logo-mini mx-3" href="{{('/')}}"><img src="{{asset('assets/images/logo.png')}}" alt="" srcset="" style="height: 30px; width:30px;"></a>
+        <a class="navbar-brand brand-logo mx-3" href="{{url('/')}}"><img src="{{asset('assets/images/logo.png')}}" alt="" srcset="" style="height: 50px; width:50px;"></a>
+        <a class="navbar-brand brand-logo-mini mx-3" href="{{url('/')}}"><img src="{{asset('assets/images/logo.png')}}" alt="" srcset="" style="height: 30px; width:30px;"></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
