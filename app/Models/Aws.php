@@ -42,4 +42,12 @@ class Aws extends Model
         }
         return $transformedData;
     }
+
+    public static function detailData($sn)
+    {
+        $client = new Client();
+        $response = $client->post(env('APP_HOST_API') . 'aws-detail/' . $sn);
+        $res = json_decode($response->getBody());
+        return $res;
+    }
 }

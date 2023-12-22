@@ -17,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('aws-details', [AwsController::class, 'index']);
+Route::get('aws-details/{sn}', [AwsController::class, 'index']);
 Route::get('aws', [AwsController::class, 'show']);
 Route::get('wl-details', [WaterLevelController::class, 'index']);
