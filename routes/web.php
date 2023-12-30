@@ -23,8 +23,17 @@ Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('auth', [AuthController::class, 'auth']);
 Route::get('logout', [AuthController::class, 'logout']);
 
-
+// Main Dashboard
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('aws-details/{sn}', [AwsController::class, 'index']);
-Route::get('aws', [AwsController::class, 'show']);
-Route::get('wl-details', [WaterLevelController::class, 'index']);
+
+// AWS Device
+Route::middleware('auth')->group(function () {
+    Route::get('aws', [AwsController::class, 'show']);
+    Route::get('aws-details/{sn}', [AwsController::class, 'index']);
+});
+
+
+// AWLR Device
+Route::middleware('auth')->group(function () {
+    Route::get('wl-details', [WaterLevelController::class, 'index']);
+});
