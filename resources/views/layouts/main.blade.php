@@ -1,6 +1,7 @@
 @include('layouts/partials/header')
 
 <body>
+    @include('sweetalert::alert')
     <div class="container-scroller">
         @include('layouts/partials/navbar')
         <div class="container-fluid page-body-wrapper">
@@ -11,7 +12,6 @@
                 </div>
                 <!-- content-wrapper ends -->
                 @include('layouts/partials/footer')
-                @include('sweetalert::alert')
             </div>
             <!-- main-panel ends -->
         </div>
