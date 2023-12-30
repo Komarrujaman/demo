@@ -11,6 +11,7 @@
                 </div>
                 <!-- content-wrapper ends -->
                 @include('layouts/partials/footer')
+                @include('sweetalert::alert')
             </div>
             <!-- main-panel ends -->
         </div>
