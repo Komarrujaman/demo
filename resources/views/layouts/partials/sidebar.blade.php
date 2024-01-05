@@ -34,7 +34,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{url('user')}}">
                 <span class="menu-title">User Management</span>
                 <i class="mdi mdi-account menu-icon"></i>
             </a>

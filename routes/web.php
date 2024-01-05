@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AwsController;
 use App\Http\Controllers\HomeController;
@@ -36,4 +37,13 @@ Route::middleware('auth')->group(function () {
 // AWLR Device
 Route::middleware('auth')->group(function () {
     Route::get('wl-details', [WaterLevelController::class, 'index']);
+});
+
+
+// User Management
+Route::middleware('auth')->group(function () {
+    Route::get('user', [AdminController::class, 'index']);
+    Route::post('user/create', [AdminController::class, 'store']);
+    Route::get('user/delete/{id}', [AdminController::class, 'destroy']);
+    Route::post('user/edit', [AdminController::class, 'update']);
 });
